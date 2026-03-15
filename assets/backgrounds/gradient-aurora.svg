@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <!-- Base gradient: indigo to violet to cyan -->
+    <linearGradient id="aurora-base" x1="0%" y1="30%" x2="100%" y2="70%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="50%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <!-- Aurora blob 1: large indigo, top-left -->
+    <radialGradient id="aurora-blob1" cx="15%" cy="20%" r="40%" fx="15%" fy="20%">
+      <stop offset="0%" stop-color="#4f46e5" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#6366f1" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Aurora blob 2: violet center-top -->
+    <radialGradient id="aurora-blob2" cx="50%" cy="15%" r="35%" fx="50%" fy="15%">
+      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.5"/>
+      <stop offset="50%" stop-color="#8b5cf6" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Aurora blob 3: cyan, right side -->
+    <radialGradient id="aurora-blob3" cx="85%" cy="35%" r="40%" fx="85%" fy="35%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.45"/>
+      <stop offset="50%" stop-color="#06b6d4" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Aurora blob 4: pink accent, center-bottom -->
+    <radialGradient id="aurora-blob4" cx="40%" cy="75%" r="35%" fx="40%" fy="75%">
+      <stop offset="0%" stop-color="#c084fc" stop-opacity="0.35"/>
+      <stop offset="50%" stop-color="#a855f7" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#a855f7" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Aurora blob 5: teal glow bottom-right -->
+    <radialGradient id="aurora-blob5" cx="75%" cy="80%" r="35%" fx="75%" fy="80%">
+      <stop offset="0%" stop-color="#2dd4bf" stop-opacity="0.3"/>
+      <stop offset="50%" stop-color="#14b8a6" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#14b8a6" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Aurora blob 6: deep indigo bottom-left -->
+    <radialGradient id="aurora-blob6" cx="10%" cy="85%" r="30%" fx="10%" fy="85%">
+      <stop offset="0%" stop-color="#4338ca" stop-opacity="0.4"/>
+      <stop offset="50%" stop-color="#3730a3" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#3730a3" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Aurora blob 7: bright cyan accent top-right -->
+    <radialGradient id="aurora-blob7" cx="92%" cy="10%" r="25%" fx="92%" fy="10%">
+      <stop offset="0%" stop-color="#67e8f9" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#67e8f9" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Gaussian blur for aurora softness -->
+    <filter id="aurora-blur">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="80"/>
+    </filter>
+  </defs>
+  <!-- Base gradient -->
+  <rect width="1920" height="1080" fill="url(#aurora-base)"/>
+  <!-- Blurred aurora mesh circles -->
+  <g filter="url(#aurora-blur)">
+    <ellipse cx="288" cy="216" rx="770" ry="432" fill="#4f46e5" fill-opacity="0.3"/>
+    <ellipse cx="960" cy="162" rx="672" ry="378" fill="#a78bfa" fill-opacity="0.25"/>
+    <ellipse cx="1632" cy="378" rx="770" ry="432" fill="#22d3ee" fill-opacity="0.25"/>
+    <ellipse cx="768" cy="810" rx="672" ry="378" fill="#c084fc" fill-opacity="0.2"/>
+    <ellipse cx="1440" cy="864" rx="672" ry="378" fill="#2dd4bf" fill-opacity="0.18"/>
+    <ellipse cx="192" cy="918" rx="576" ry="324" fill="#4338ca" fill-opacity="0.22"/>
+    <ellipse cx="1766" cy="108" rx="480" ry="270" fill="#67e8f9" fill-opacity="0.15"/>
+  </g>
+  <!-- Overlay radial glows for extra richness (unblurred, subtle) -->
+  <rect width="1920" height="1080" fill="url(#aurora-blob1)"/>
+  <rect width="1920" height="1080" fill="url(#aurora-blob3)"/>
+  <rect width="1920" height="1080" fill="url(#aurora-blob5)"/>
+</svg>

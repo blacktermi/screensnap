@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 100" width="600" height="100">
+  <defs>
+    <linearGradient id="text-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1e3a8a"/>
+      <stop offset="100%" style="stop-color:#2563eb"/>
+    </linearGradient>
+  </defs>
+
+  <style>
+    @font-face {
+      font-family: 'system-ui';
+      src: local('-apple-system'), local('BlinkMacSystemFont'), local('SF Pro Display');
+    }
+    .brand-text {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .brand-text-light {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+  </style>
+
+  <!-- "Screen" in bold -->
+  <text x="0" y="74" class="brand-text" font-size="72" fill="url(#text-gradient)">Screen</text>
+
+  <!-- "Snap" in regular weight -->
+  <text x="310" y="74" class="brand-text-light" font-size="72" fill="#3b82f6">Snap</text>
+</svg>

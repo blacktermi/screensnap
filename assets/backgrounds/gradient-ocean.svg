@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <!-- Main diagonal gradient -->
+    <linearGradient id="ocean-base" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="45%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
+    </linearGradient>
+    <!-- Soft radial glow bottom-right for depth -->
+    <radialGradient id="ocean-glow-br" cx="85%" cy="80%" r="60%" fx="85%" fy="80%">
+      <stop offset="0%" stop-color="#93c5fd" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#93c5fd" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Soft radial glow top-left for depth -->
+    <radialGradient id="ocean-glow-tl" cx="10%" cy="15%" r="50%" fx="10%" fy="15%">
+      <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#1e3a8a" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Subtle center highlight -->
+    <radialGradient id="ocean-center" cx="50%" cy="45%" r="45%" fx="50%" fy="45%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Base gradient -->
+  <rect width="1920" height="1080" fill="url(#ocean-base)"/>
+  <!-- Layered radial glows for mesh effect -->
+  <rect width="1920" height="1080" fill="url(#ocean-glow-tl)"/>
+  <rect width="1920" height="1080" fill="url(#ocean-glow-br)"/>
+  <rect width="1920" height="1080" fill="url(#ocean-center)"/>
+</svg>

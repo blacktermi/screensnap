@@ -1,0 +1,103 @@
+name: Bug Report
+description: Signaler un bug dans ScreenSnap
+title: "[Bug]: "
+labels: ["bug", "triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Merci de prendre le temps de signaler ce bug.
+        Remplissez les champs ci-dessous pour nous aider a reproduire et corriger le probleme.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Resume
+      description: Description courte et claire du bug.
+      placeholder: "Ex: L'application crash au lancement lors de la capture d'ecran"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Etapes pour reproduire
+      description: Les etapes precises pour reproduire le bug.
+      placeholder: |
+        1. Ouvrir ScreenSnap
+        2. Appuyer sur Cmd+Shift+5
+        3. Selectionner une zone
+        4. Observer le crash
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportement attendu
+      description: Ce qui devrait se passer normalement.
+      placeholder: "La capture d'ecran devrait etre prise et affichee dans l'editeur"
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Comportement actuel
+      description: Ce qui se passe effectivement.
+      placeholder: "L'application crash avec une erreur segfault"
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Captures d'ecran
+      description: Ajoutez des captures d'ecran si possible pour illustrer le probleme.
+      placeholder: "Glissez-deposez vos images ici"
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: "## Environnement"
+
+  - type: input
+    id: macos-version
+    attributes:
+      label: Version macOS
+      description: "Quelle version de macOS utilisez-vous ?"
+      placeholder: "Ex: macOS 15.3 Sequoia"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: chip
+    attributes:
+      label: Processeur
+      description: "Quel type de processeur ?"
+      options:
+        - Apple Silicon (M1/M2/M3/M4)
+        - Intel
+    validations:
+      required: true
+
+  - type: input
+    id: app-version
+    attributes:
+      label: Version de ScreenSnap
+      description: "Quelle version de ScreenSnap utilisez-vous ? (voir About ScreenSnap)"
+      placeholder: "Ex: 0.1.0"
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Contexte supplementaire
+      description: Toute information supplementaire utile (logs, configuration, etc.)
+      placeholder: "Logs de la console, configuration speciale, etc."
+    validations:
+      required: false

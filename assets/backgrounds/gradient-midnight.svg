@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <!-- Main diagonal gradient -->
+    <linearGradient id="midnight-base" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </linearGradient>
+    <!-- Subtle lighter glow center -->
+    <radialGradient id="midnight-glow" cx="50%" cy="45%" r="50%" fx="50%" fy="45%">
+      <stop offset="0%" stop-color="#475569" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#475569" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Deep corner darkening top-left -->
+    <radialGradient id="midnight-dark-tl" cx="0%" cy="0%" r="60%" fx="0%" fy="0%">
+      <stop offset="0%" stop-color="#020617" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#020617" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Slight blue tint bottom-right -->
+    <radialGradient id="midnight-blue" cx="85%" cy="80%" r="40%" fx="85%" fy="80%">
+      <stop offset="0%" stop-color="#1e40af" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#1e40af" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Dot grid pattern -->
+    <pattern id="dot-grid" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="12" cy="12" r="0.8" fill="#94a3b8" fill-opacity="0.12"/>
+    </pattern>
+  </defs>
+  <!-- Base gradient -->
+  <rect width="1920" height="1080" fill="url(#midnight-base)"/>
+  <!-- Layered glows -->
+  <rect width="1920" height="1080" fill="url(#midnight-dark-tl)"/>
+  <rect width="1920" height="1080" fill="url(#midnight-glow)"/>
+  <rect width="1920" height="1080" fill="url(#midnight-blue)"/>
+  <!-- Subtle dot grid overlay -->
+  <rect width="1920" height="1080" fill="url(#dot-grid)"/>
+</svg>
