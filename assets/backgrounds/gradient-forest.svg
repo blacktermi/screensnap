@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <!-- Main diagonal gradient -->
+    <linearGradient id="forest-base" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b"/>
+      <stop offset="50%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <!-- Deep green glow top-left -->
+    <radialGradient id="forest-deep" cx="5%" cy="8%" r="50%" fx="5%" fy="8%">
+      <stop offset="0%" stop-color="#022c22" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#022c22" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Mint glow bottom-right -->
+    <radialGradient id="forest-mint" cx="92%" cy="88%" r="50%" fx="92%" fy="88%">
+      <stop offset="0%" stop-color="#6ee7b7" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#6ee7b7" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Emerald center highlight -->
+    <radialGradient id="forest-center" cx="45%" cy="50%" r="40%" fx="45%" fy="50%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Teal accent top-right -->
+    <radialGradient id="forest-teal" cx="80%" cy="15%" r="35%" fx="80%" fy="15%">
+      <stop offset="0%" stop-color="#14b8a6" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#14b8a6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Base gradient -->
+  <rect width="1920" height="1080" fill="url(#forest-base)"/>
+  <!-- Layered radial glows -->
+  <rect width="1920" height="1080" fill="url(#forest-deep)"/>
+  <rect width="1920" height="1080" fill="url(#forest-mint)"/>
+  <rect width="1920" height="1080" fill="url(#forest-center)"/>
+  <rect width="1920" height="1080" fill="url(#forest-teal)"/>
+</svg>

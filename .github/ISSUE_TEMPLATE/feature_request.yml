@@ -1,0 +1,59 @@
+name: Feature Request
+description: Proposer une nouvelle fonctionnalite pour ScreenSnap
+title: "[Feature]: "
+labels: ["enhancement"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Merci de proposer une amelioration pour ScreenSnap.
+        Decrivez votre idee le plus clairement possible.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Description claire et detaillee de la fonctionnalite proposee.
+      placeholder: "Ex: Ajouter un mode d'enregistrement GIF avec controle du framerate"
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Cas d'utilisation
+      description: Dans quel contexte cette fonctionnalite serait-elle utile ? Quel probleme resout-elle ?
+      placeholder: |
+        En tant qu'utilisateur, je veux pouvoir enregistrer des GIF courts
+        pour les partager facilement dans Slack sans avoir a convertir une video.
+    validations:
+      required: true
+
+  - type: input
+    id: prd-reference
+    attributes:
+      label: Reference PRD
+      description: "Si cette fonctionnalite est liee a un element du PRD, indiquez la reference."
+      placeholder: "Feature #XX"
+    validations:
+      required: false
+
+  - type: textarea
+    id: mockup
+    attributes:
+      label: Maquette / Mockup
+      description: "Si vous avez un mockup ou une esquisse, partagez-le ici."
+      placeholder: "Glissez-deposez vos images ou decrivez l'interface souhaitee"
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives envisagees
+      description: "Avez-vous considere d'autres approches ? Si oui, pourquoi celle-ci est preferable ?"
+      placeholder: "Ex: On pourrait aussi utiliser ffmpeg en CLI, mais une integration native serait plus fluide"
+    validations:
+      required: false

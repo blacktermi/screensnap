@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <!-- Main gradient - Deep to vibrant blue -->
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a8a"/>
+      <stop offset="50%" style="stop-color:#2563eb"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+
+    <!-- Subtle inner glow -->
+    <radialGradient id="inner-glow" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" style="stop-color:rgba(255,255,255,0.15)"/>
+      <stop offset="100%" style="stop-color:rgba(255,255,255,0)"/>
+    </radialGradient>
+
+    <!-- Shadow filter -->
+    <filter id="icon-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="12" flood-color="rgba(0,0,0,0.25)"/>
+    </filter>
+
+    <!-- Crosshair glow -->
+    <filter id="crosshair-glow">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- macOS squircle clip path -->
+    <clipPath id="squircle">
+      <path d="M 512 16 C 814 16 1008 16 1008 210 C 1008 210 1008 512 1008 512 C 1008 814 1008 1008 814 1008 C 814 1008 512 1008 512 1008 C 210 1008 16 1008 16 814 C 16 814 16 512 16 512 C 16 210 16 16 210 16 C 210 16 512 16 512 16 Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background squircle -->
+  <rect x="16" y="16" width="992" height="992" rx="220" ry="220" fill="url(#bg-gradient)"/>
+
+  <!-- Inner glow overlay -->
+  <rect x="16" y="16" width="992" height="992" rx="220" ry="220" fill="url(#inner-glow)"/>
+
+  <!-- Subtle grid pattern for texture -->
+  <g opacity="0.04">
+    <line x1="256" y1="16" x2="256" y2="1008" stroke="white" stroke-width="1"/>
+    <line x1="512" y1="16" x2="512" y2="1008" stroke="white" stroke-width="1"/>
+    <line x1="768" y1="16" x2="768" y2="1008" stroke="white" stroke-width="1"/>
+    <line x1="16" y1="256" x2="1008" y2="256" stroke="white" stroke-width="1"/>
+    <line x1="16" y1="512" x2="1008" y2="512" stroke="white" stroke-width="1"/>
+    <line x1="16" y1="768" x2="1008" y2="768" stroke="white" stroke-width="1"/>
+  </g>
+
+  <!-- Screen/Window frame -->
+  <rect x="232" y="252" width="560" height="480" rx="16" ry="16"
+        fill="none" stroke="white" stroke-width="36" opacity="0.95"/>
+
+  <!-- Window title bar dots -->
+  <circle cx="280" cy="296" r="14" fill="#ff5f57" opacity="0.9"/>
+  <circle cx="320" cy="296" r="14" fill="#febc2e" opacity="0.9"/>
+  <circle cx="360" cy="296" r="14" fill="#28c840" opacity="0.9"/>
+
+  <!-- Title bar separator -->
+  <line x1="250" y1="332" x2="774" y2="332" stroke="white" stroke-width="3" opacity="0.4"/>
+
+  <!-- Viewfinder / Capture crosshair -->
+  <g filter="url(#crosshair-glow)" opacity="0.95">
+    <!-- Top-left corner -->
+    <path d="M 370 400 L 370 380 Q 370 370 380 370 L 400 370"
+          fill="none" stroke="white" stroke-width="28" stroke-linecap="round"/>
+
+    <!-- Top-right corner -->
+    <path d="M 624 370 L 644 370 Q 654 370 654 380 L 654 400"
+          fill="none" stroke="white" stroke-width="28" stroke-linecap="round"/>
+
+    <!-- Bottom-left corner -->
+    <path d="M 370 600 L 370 620 Q 370 630 380 630 L 400 630"
+          fill="none" stroke="white" stroke-width="28" stroke-linecap="round"/>
+
+    <!-- Bottom-right corner -->
+    <path d="M 624 630 L 644 630 Q 654 630 654 620 L 654 600"
+          fill="none" stroke="white" stroke-width="28" stroke-linecap="round"/>
+  </g>
+
+  <!-- Center crosshair dot -->
+  <circle cx="512" cy="500" r="16" fill="white" opacity="0.9"/>
+
+  <!-- Small crosshair lines -->
+  <line x1="512" y1="470" x2="512" y2="488" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
+  <line x1="512" y1="512" x2="512" y2="530" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
+  <line x1="482" y1="500" x2="500" y2="500" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
+  <line x1="524" y1="500" x2="542" y2="500" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
+
+  <!-- Flash/Snap indicator (top right) -->
+  <g transform="translate(740, 160)" opacity="0.95">
+    <path d="M 0 0 L -20 40 L 8 32 L -8 68"
+          fill="none" stroke="#fbbf24" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Small lens flare accent -->
+  <circle cx="740" cy="160" r="40" fill="white" opacity="0.08"/>
+  <circle cx="740" cy="160" r="20" fill="white" opacity="0.05"/>
+</svg>

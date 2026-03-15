@@ -1,0 +1,178 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+env:
+  NODE_VERSION: '20'
+  PNPM_VERSION: '8'
+
+jobs:
+  build-arm64:
+    name: Build DMG (Apple Silicon)
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build renderer
+        run: pnpm build:renderer
+
+      - name: Build main process
+        run: pnpm build:main
+
+      - name: Build preload scripts
+        run: pnpm build:preload
+
+      - name: Package DMG (arm64)
+        run: pnpm package -- --arch=arm64
+        env:
+          CSC_LINK: ${{ secrets.CSC_LINK }}
+          CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
+
+      - name: Upload arm64 DMG
+        uses: actions/upload-artifact@v4
+        with:
+          name: dmg-arm64
+          path: dist/*.dmg
+          retention-days: 1
+
+  build-x64:
+    name: Build DMG (Intel)
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build renderer
+        run: pnpm build:renderer
+
+      - name: Build main process
+        run: pnpm build:main
+
+      - name: Build preload scripts
+        run: pnpm build:preload
+
+      - name: Package DMG (x64)
+        run: pnpm package -- --arch=x64
+        env:
+          CSC_LINK: ${{ secrets.CSC_LINK }}
+          CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
+
+      - name: Upload x64 DMG
+        uses: actions/upload-artifact@v4
+        with:
+          name: dmg-x64
+          path: dist/*.dmg
+          retention-days: 1
+
+  notarize:
+    name: Notarize with Apple
+    runs-on: macos-latest
+    needs: [build-arm64, build-x64]
+    steps:
+      - name: Download arm64 DMG
+        uses: actions/download-artifact@v4
+        with:
+          name: dmg-arm64
+          path: artifacts/arm64
+
+      - name: Download x64 DMG
+        uses: actions/download-artifact@v4
+        with:
+          name: dmg-x64
+          path: artifacts/x64
+
+      # TODO: Implement Apple notarization
+      # Requires Apple Developer account credentials:
+      #   APPLE_ID, APPLE_APP_SPECIFIC_PASSWORD, APPLE_TEAM_ID
+      - name: Notarize arm64 DMG
+        run: |
+          echo "⏳ Apple notarization placeholder — configure secrets to enable"
+          echo "Required secrets: APPLE_ID, APPLE_APP_SPECIFIC_PASSWORD, APPLE_TEAM_ID"
+          # xcrun notarytool submit artifacts/arm64/*.dmg \
+          #   --apple-id "${{ secrets.APPLE_ID }}" \
+          #   --password "${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}" \
+          #   --team-id "${{ secrets.APPLE_TEAM_ID }}" \
+          #   --wait
+          # xcrun stapler staple artifacts/arm64/*.dmg
+
+      - name: Notarize x64 DMG
+        run: |
+          echo "⏳ Apple notarization placeholder — configure secrets to enable"
+          # xcrun notarytool submit artifacts/x64/*.dmg \
+          #   --apple-id "${{ secrets.APPLE_ID }}" \
+          #   --password "${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}" \
+          #   --team-id "${{ secrets.APPLE_TEAM_ID }}" \
+          #   --wait
+          # xcrun stapler staple artifacts/x64/*.dmg
+
+      - name: Upload notarized artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dmg-notarized
+          path: artifacts/
+          retention-days: 1
+
+  release:
+    name: Create GitHub Release
+    runs-on: macos-latest
+    needs: notarize
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download notarized artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dmg-notarized
+          path: artifacts/
+
+      - name: Extract version from tag
+        id: version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: ScreenSnap v${{ steps.version.outputs.VERSION }}
+          draft: true
+          prerelease: ${{ contains(github.ref, 'beta') || contains(github.ref, 'alpha') }}
+          generate_release_notes: true
+          files: |
+            artifacts/**/*.dmg
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

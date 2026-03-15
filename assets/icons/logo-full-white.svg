@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 80" width="420" height="80">
+  <defs>
+    <linearGradient id="icon-bg-w" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a8a"/>
+      <stop offset="50%" style="stop-color:#2563eb"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+    <radialGradient id="icon-glow-w" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" style="stop-color:rgba(255,255,255,0.12)"/>
+      <stop offset="100%" style="stop-color:rgba(255,255,255,0)"/>
+    </radialGradient>
+  </defs>
+
+  <style>
+    .brand-bold-w {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .brand-regular-w {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+  </style>
+
+  <!-- Mini icon -->
+  <g transform="translate(0, 4)">
+    <rect x="2" y="2" width="68" height="68" rx="16" ry="16" fill="url(#icon-bg-w)"/>
+    <rect x="2" y="2" width="68" height="68" rx="16" ry="16" fill="url(#icon-glow-w)"/>
+    <rect x="16" y="19" width="40" height="34" rx="3" ry="3"
+          fill="none" stroke="white" stroke-width="3" opacity="0.95"/>
+    <circle cx="21" cy="23" r="1.5" fill="#ff5f57" opacity="0.9"/>
+    <circle cx="26" cy="23" r="1.5" fill="#febc2e" opacity="0.9"/>
+    <circle cx="31" cy="23" r="1.5" fill="#28c840" opacity="0.9"/>
+    <line x1="17.5" y1="28" x2="54.5" y2="28" stroke="white" stroke-width="0.5" opacity="0.35"/>
+    <path d="M 27 33 L 27 31 Q 27 30 28 30 L 30 30" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M 42 30 L 44 30 Q 45 30 45 31 L 45 33" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M 27 45 L 27 47 Q 27 48 28 48 L 30 48" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M 42 48 L 44 48 Q 45 48 45 47 L 45 45" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="36" cy="39" r="2" fill="white" opacity="0.9"/>
+    <g transform="translate(52, 10)" opacity="0.95">
+      <path d="M 0 0 L -2 4 L 1 3 L -1 7" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+
+  <!-- White wordmark -->
+  <text x="86" y="54" class="brand-bold-w" font-size="38" fill="rgba(255,255,255,0.95)">Screen</text>
+  <text x="252" y="54" class="brand-regular-w" font-size="38" fill="rgba(255,255,255,0.7)">Snap</text>
+</svg>
