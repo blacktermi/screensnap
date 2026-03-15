@@ -55,7 +55,7 @@ export class ShortcutManager {
    */
   updateFromSettings(newShortcuts: Partial<ShortcutMap>): void {
     this.unregisterAll()
-    this.shortcuts = { ...this.defaultShortcuts, ...newShortcuts }
+    this.shortcuts = { ...this.defaultShortcuts, ...newShortcuts } as ShortcutMap
     this.registerAll()
   }
 

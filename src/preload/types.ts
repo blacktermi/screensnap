@@ -3,38 +3,111 @@
  * Ce fichier definit le contrat de l'API exposee via contextBridge.
  */
 
-// ─── Re-exports depuis le processus principal ────────────────────────────────
+// ─── Types dupliqués depuis le processus principal ──────────────────────────
+// (copie locale pour éviter les problèmes de rootDir entre main/ et preload/)
 
-export type {
-  CaptureRect,
-  CaptureMetadata,
-  CaptureType,
-  CaptureFormat,
-  CaptureOptions,
-  RecordingMode,
-  RecordingState,
-  RecordingOptions,
-  RecordingResult,
-  AudioDevice,
-  OcrResult,
-  OcrRegion,
-  WindowInfo,
-  DisplayInfo,
-  PinOptions,
-  AppSettings,
-  ShortcutMap,
-} from '../main/types'
+export interface CaptureRect {
+  x: number
+  y: number
+  width: number
+  height: number
+}
 
-import type {
-  CaptureMetadata,
-  CaptureOptions,
-  RecordingOptions,
-  RecordingState,
-  RecordingResult,
-  OcrResult,
-  DisplayInfo,
-  AppSettings,
-} from '../main/types'
+export type CaptureType = 'screenshot' | 'video' | 'gif'
+export type CaptureFormat = 'png' | 'jpg' | 'webp' | 'tiff'
+export type RecordingMode = 'video' | 'gif'
+export type RecordingState = 'idle' | 'recording' | 'paused' | 'stopped'
+
+export interface CaptureMetadata {
+  id: string
+  type: CaptureType
+  path: string
+  thumbnailPath: string | null
+  dimensions: { width: number; height: number }
+  fileSize: number
+  createdAt: Date
+  tags: string[]
+}
+
+export interface CaptureOptions {
+  format?: CaptureFormat
+  quality?: number
+  showCursor?: boolean
+  playSound?: boolean
+  copyToClipboard?: boolean
+}
+
+export interface RecordingOptions {
+  mode: RecordingMode
+  fps?: number
+  quality?: 'low' | 'medium' | 'high' | 'lossless'
+  audioMic?: boolean
+  audioSystem?: boolean
+  webcam?: boolean
+}
+
+export interface RecordingResult {
+  path: string
+  duration: number
+  fileSize: number
+}
+
+export interface AudioDevice {
+  id: string
+  name: string
+  isDefault: boolean
+}
+
+export interface OcrRegion {
+  text: string
+  bounds: CaptureRect
+  confidence: number
+}
+
+export interface OcrResult {
+  text: string
+  regions: OcrRegion[]
+}
+
+export interface WindowInfo {
+  id: number
+  name: string
+  ownerName: string
+  bounds: CaptureRect
+}
+
+export interface DisplayInfo {
+  id: number
+  bounds: CaptureRect
+  scaleFactor: number
+  isPrimary: boolean
+}
+
+export interface PinOptions {
+  opacity?: number
+  alwaysOnTop?: boolean
+  locked?: boolean
+}
+
+export interface ShortcutMap {
+  [action: string]: string
+}
+
+export interface AppSettings {
+  theme: 'light' | 'dark' | 'system'
+  language: string
+  savePath: string
+  captureFormat: CaptureFormat
+  captureQuality: number
+  showCursor: boolean
+  playSound: boolean
+  copyToClipboard: boolean
+  showOverlay: boolean
+  overlayPosition: 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left'
+  autoClose: boolean
+  autoCloseDelay: number
+  shortcuts: ShortcutMap
+}
 
 // ─── Options et parametres ───────────────────────────────────────────────────
 

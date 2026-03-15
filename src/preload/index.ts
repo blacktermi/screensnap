@@ -109,7 +109,7 @@ const electronAPI: ElectronAPI = {
     ipcRenderer.on(channel, listener)
   },
 
-  off: (channel: string, callback: (...args: unknown[]) => void) => {
+  off: (channel: string, _callback: (...args: unknown[]) => void) => {
     // Note : ipcRenderer.removeListener attend le listener exact.
     // En pratique, on supprime tous les listeners du canal.
     ipcRenderer.removeAllListeners(channel)

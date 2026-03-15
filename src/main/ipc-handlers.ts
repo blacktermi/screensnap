@@ -262,7 +262,7 @@ function registerClipboardHandlers(): void {
 function registerFileHandlers(): void {
   ipcMain.handle(
     'file:save',
-    async (_event, buffer: Buffer, format: string, filename?: string): Promise<string | null> => {
+    async (_event, _buffer: Buffer, format: string, filename?: string): Promise<string | null> => {
       console.log('[IPC] file:save', { format, filename })
       // TODO: Sauvegarder le fichier sur le disque
       return null
